@@ -4,11 +4,11 @@ Version: 0.0.0.9000
 Authors@R: 
     c(person("Spencer", "Gerlach", , "spence.gerlach@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
-      person("Ty", "Andrews", , "first.last@example.com", role = c("aut", "cre"),
+      person("Ty", "Andrews", , "first.last@example.com", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
-      person("Kelly", "Wu", , "first.last@example.com", role = c("aut", "cre"),
+      person("Kelly", "Wu", , "first.last@example.com", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID")),
-      person("Morris", "Zhao", , "first.last@example.com", role = c("aut", "cre"),
+      person("Morris", "Zhao", , "first.last@example.com", role = c("aut"),
            comment = c(ORCID = "YOUR-ORCID-ID")))
 Description: The package helps users to get simple answers on how to choose the used Mercedes Benz car in the market. The package also includes useful visualization tool and trained model to serve buyers and sellers.
 License: MIT + file LICENSE
