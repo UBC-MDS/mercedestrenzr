@@ -6,48 +6,81 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of mercedestrenzr is to …
+The goal of mercedestrenzr is to inspect and analyze used Mercedes Benz
+car prices. The package helps users to get simple answers on how to
+choose the used Mercedes Benz car in the market. The package also
+includes useful visualization tool and trained model to serve buyers and
+sellers.
 
-## Installation
+# Collaborators
 
-You can install the development version of mercedestrenzr like so:
+Kelly Wu, Morris Zhao, Spencer Gerlach, Ty Andrews
+
+# R ecosystem
+
+Our package is unique in the r package ecosystem. It provides an easy
+way to investigate used Mercedes Benz car prices. It provide people a
+big picture about the market. The package is rely on the real market
+data set to plot, filter and predict. It also gives advice to buyers and
+seller when they try to make a decision.
+
+# Functions
+
+The package contains the following functions:
+
+1.  `load_sample_mercedes_listings`: Retrieves a data frame that
+    containing sample data of used Mercedez Benz vehicles.
+
+2.  `plot_mercedes_price`: Plot a density plot of a Mercedes-Benz model
+    to see where the current vehicle’s price falls for that same model
+    in the market.
+
+3.  `listing_search`: Retrieves the top listings that are within the
+    budget range specified by the user.
+
+4.  `predict_mercedes_price`: Predicts the price in USD of a
+    Mercedes-Benz given the year, model, condition, and number of
+    cylinders.
+
+# Package dataset
+
+The package contains a static dataset for Craiglist used-car listings
+that were previously web scraped. Several key attributes about the
+used-car are available in the dataset, such as vehicle prices, models,
+car conditions, odometer readings, VINs, regions and transmission. The
+package’s dataset was adapted from verison 10 of the raw dataset created
+by [AustinReese](https://github.com/AustinReese/UsedVehicleSearch).
+
+# Installation
+
+You can install the development version of mercedestrenzr from
+[GitHub](https://github.com/) with:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+# install.packages("devtools")
+devtools::install_github("UBC-MDS/mercedestrenzr")
 ```
 
-## Example
+# Usage (TO BE COMPLETED once the function codes are added)
 
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-library(mercedestrenzr)
+#library(mercedestrenzr)
 ## basic example code
+
+# load sample data from package
+
+# filter listings based on budget range of characteristics of interest
+#listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer", ascending = TRUE)
+
+# visualizing the price distribution
+
+# predict how much a car would be using regression model
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+# Contributing
 
-``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
-```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+Interested in contributing? Check out the contributing guidelines.
+Please note that this project is released with a Code of Conduct. By
+contributing to this project, you agree to abide by its terms.
