@@ -13,9 +13,9 @@
 #' @return data.frame A data frame of the sorted listings that matches user's expected budget range.
 #'
 #' @examples
-#' listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer", ascending = TRUE)
-#' listing_search(data, budget=50000, model = "gls", sort_feature = "year", ascending = FALSE)
+#' listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
+#' listing_search(data, budget=50000, model = "gl-class", sort_feature = "year", ascending = FALSE)
 
-listing_search <- function(data, budget=c(0, Inf), model = "any", sort_feature = "odometer", ascending = TRUE) {
+listing_search <- function(data, budget=c(0, Inf), model = "any", sort_feature = "odometer_mi", ascending = TRUE) {
 
 }
