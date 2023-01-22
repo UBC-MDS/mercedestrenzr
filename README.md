@@ -28,19 +28,20 @@ seller when they try to make a decision.
 
 The package contains the following functions:
 
-1.  `load_sample_mercedes_listings`: Retrieves a data frame that
-    containing sample data of used Mercedez Benz vehicles.
-
-2.  `plot_mercedes_price`: Plot a density plot of a Mercedes-Benz model
+1.  `plot_mercedes_price`: Plot a density plot of a Mercedes-Benz model
     to see where the current vehicle’s price falls for that same model
     in the market.
 
-3.  `listing_search`: Retrieves the top listings that are within the
+2.  `listing_search`: Retrieves the top listings that are within the
     budget range specified by the user.
 
-4.  `predict_mercedes_price`: Predicts the price in USD of a
+3.  `predict_mercedes_price`: Predicts the price in USD of a
     Mercedes-Benz given the year, model, condition, and number of
     cylinders.
+
+4.  `important_mercedes_features`: Returns the features (i.e. data
+    columns) that are important to determining predicted mercedes
+    pricing.
 
 # Package dataset
 
@@ -76,7 +77,7 @@ This is a basic example which shows you how to solve a common problem:
 
 # visualizing the price distribution
 
-# predict how much a car would be using regression model
+# predict how much a car would be using regression model and show important features
 ```
 
 # Contributing

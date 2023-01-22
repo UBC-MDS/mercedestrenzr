@@ -29,13 +29,13 @@ Our package is unique in the r package ecosystem. It provides an easy way to inv
 # Functions
 The package contains the following functions:
 
-1. `load_sample_mercedes_listings`: Retrieves a data frame that containing sample data of used Mercedez Benz vehicles.
+1. `plot_mercedes_price`: Plot a density plot of a Mercedes-Benz model to see where the current vehicle's price falls for that same model in the market.
 
-2. `plot_mercedes_price`: Plot a density plot of a Mercedes-Benz model to see where the current vehicle's price falls for that same model in the market.
+2. `listing_search`: Retrieves the top listings that are within the budget range specified by the user.
 
-3. `listing_search`: Retrieves the top listings that are within the budget range specified by the user.
+3. `predict_mercedes_price`: Predicts the price in USD of a Mercedes-Benz given the year, model, condition, and number of cylinders.
 
-4. `predict_mercedes_price`: Predicts the price in USD of a Mercedes-Benz given the year, model, condition, and number of cylinders.
+4. `important_mercedes_features`: Returns the features (i.e. data columns) that are important to determining predicted mercedes pricing.
 
 # Package dataset
 The package contains a static dataset for Craiglist used-car listings that were previously web scraped. Several key attributes about the used-car are available in the dataset, such as vehicle prices, models, car conditions, odometer readings, VINs, regions and transmission. The package's dataset was adapted from verison 10 of the raw dataset created by [AustinReese](https://github.com/AustinReese/UsedVehicleSearch).
@@ -65,7 +65,7 @@ This is a basic example which shows you how to solve a common problem:
 
 # visualizing the price distribution
 
-# predict how much a car would be using regression model
+# predict how much a car would be using regression model and show important features
 
 ```
 
