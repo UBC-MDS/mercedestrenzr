@@ -9,7 +9,7 @@ listing_search(
   data,
   budget = c(0, Inf),
   model = "any",
-  sort_feature = "odometer",
+  sort_feature = "odometer_mi",
   ascending = TRUE
 )
 }
@@ -32,6 +32,6 @@ Return the top listings that are within the budget specified by the user.
 The results are filtered by an optional input, model, and sorted by ascending price and another the specified feature in the sort_feature parameter.
 }
 \examples{
-listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer", ascending = TRUE)
-listing_search(data, budget=50000, model = "gls", sort_feature = "year", ascending = FALSE)
+listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
+listing_search(data, budget=50000, model = "gl-class", sort_feature = "year", ascending = FALSE)
 }
