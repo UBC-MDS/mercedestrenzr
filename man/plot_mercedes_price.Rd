@@ -4,7 +4,13 @@
 \alias{plot_mercedes_price}
 \title{Plot Mercedes Price}
 \usage{
-plot_mercedes_price(model, price, market_df)
+plot_mercedes_price(
+  model,
+  price,
+  market_df,
+  model_col = "model",
+  price_col = "price_USD"
+)
 }
 \arguments{
 \item{model}{character The model of the vehicle.}
@@ -12,6 +18,10 @@ plot_mercedes_price(model, price, market_df)
 \item{price}{numeric  The price of the vehicle.}
 
 \item{market_df}{data.frame Data containing information on used Mercedes-Benz in the market.}
+
+\item{model_col}{character The name of the column of model. (By default 'model')}
+
+\item{price_col}{character The name of the column of price. (By default 'price_USD')}
 }
 \value{
 ggplot Density plot of prices for the specified Mercedes-Benz model.
@@ -21,6 +31,7 @@ Plot a density plot of a specific Mercedes-Benz model to see where the current v
 falls within the distribution of prices for that model in the market.
 }
 \examples{
-plot_mercedes_price(model='S-Class', price=80000, market_df=market_df))
-plot_mercedes_price(model='C-Class', price=10000, market_df=used_car_df))
+data <- as.double(sample(10000:500000, 1000, replace = TRUE))
+market_df <- data.frame(price_USD = data, model = "glb 35")
+plot_mercedes_price('glb 35', 200000, market_df)
 }
