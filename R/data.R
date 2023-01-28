@@ -22,8 +22,10 @@
 #' model = c("s-class", "glk", "gls", "gls"),
 #' odometer_mi = c(12000, 30000, 35000, 150000),
 #' year = c(2016, 2015, 2020, 2010))
-#' listing_search(sample_data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
-#' listing_search(sample_data, budget=50000, model = "gls", sort_feature = "year", ascending = FALSE)
+#' listing_search(sample_data, budget=c(0, 30000), model = "any",
+#' sort_feature = "odometer_mi", ascending = TRUE)
+#' listing_search(sample_data, budget=50000, model = "gls",
+#' sort_feature = "year", ascending = FALSE)
 
 listing_search <- function(data, budget=c(0, Inf), model = "any",
                            sort_feature = "odometer_mi", ascending = TRUE,
