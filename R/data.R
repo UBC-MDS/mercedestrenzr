@@ -12,9 +12,8 @@
 #' @param price_col character Character value that indicate the column name of price column.
 #'
 #' @return data.frame A data frame of the sorted listings that matches user's expected budget range.
-#'
+#' @import dplyr
 #' @export
-#'
 #' @examples
 #' sample_data <- data.frame(condition = c("good", "average", "average", "new"),
 #' price_USD = c(50000, 20000, 80000, 90000),
@@ -23,8 +22,6 @@
 #' year = c(2016, 2015, 2020, 2010))
 #' listing_search(sample_data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
 #' listing_search(sample_data, budget=50000, model = "gls", sort_feature = "year", ascending = FALSE)
-
-require(tidyverse)
 
 listing_search <- function(data, budget=c(0, Inf), model = "any",
                            sort_feature = "odometer_mi", ascending = TRUE,
@@ -76,29 +73,29 @@ listing_search <- function(data, budget=c(0, Inf), model = "any",
   # ==== FUNCTION ====
   # filter by budget
   if(length(budget) == 1){ # max budget specified
-    temp_df <- data |> filter(!!sym(price_col) <= budget)
+    temp_df <- data |> dplyr::filter(!!sym(price_col) <= budget)
   }else{
-    temp_df <- data |> filter(!!sym(price_col) >= budget[[1]] & !!sym(price_col) <= budget[[2]])
+    temp_df <- data |> dplyr::filter(!!sym(price_col) >= budget[[1]] & !!sym(price_col) <= budget[[2]])
   }
 
   # filter by model
   if(model != "any"){
-    temp_df <- temp_df |> filter(model = model)
+    temp_df <- temp_df |> dplyr::filter(model == model)
   }
 
   # sort by sort_feature & price
   if(ascending==TRUE){
-    temp_df <- temp_df|> arrange(!!sym(sort_feature), !!sym(price_col))
+    temp_df <- temp_df |> dplyr::arrange(!!sym(sort_feature), !!sym(price_col))
   }
   else{
-    temp_df <- temp_df|> arrange(desc(!!sym(sort_feature)), !!sym(price_col))
+    temp_df <- temp_df |> dplyr::arrange(desc(!!sym(sort_feature)), !!sym(price_col))
   }
 
   # order output
   priority_order <- c(price_col, 'model', sort_feature)
   remaining <- setdiff(names(data),priority_order)
   all_col <- c(priority_order,remaining)
-  result <- result[,all_col]
+  result <- temp_df[,all_col]
 
   result
 

@@ -24,4 +24,5 @@ LazyData: true
 Imports: 
     ggplot2,
     rlang,
-    tidyverse
+    tidyverse,
+    dplyr
