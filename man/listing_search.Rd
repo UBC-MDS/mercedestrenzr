@@ -10,7 +10,9 @@ listing_search(
   budget = c(0, Inf),
   model = "any",
   sort_feature = "odometer_mi",
-  ascending = TRUE
+  ascending = TRUE,
+  price_col = "price_USD",
+  model_col = "model"
 )
 }
 \arguments{
@@ -23,6 +25,10 @@ listing_search(
 \item{sort_feature}{character The numeric variable that the user is interested in using to sort the result. The default value is to sort by odometer value.}
 
 \item{ascending}{bool Boolean value that indicate whether the sort is ascending. The default value is True.}
+
+\item{price_col}{character Character value that indicate the column name of price column.}
+
+\item{model_col}{character Character value that indicate the column name of model column.}
 }
 \value{
 data.frame A data frame of the sorted listings that matches user's expected budget range.
@@ -32,6 +38,13 @@ Return the top listings that are within the budget specified by the user.
 The results are filtered by an optional input, model, and sorted by ascending price and another the specified feature in the sort_feature parameter.
 }
 \examples{
-listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
-listing_search(data, budget=50000, model = "gl-class", sort_feature = "year", ascending = FALSE)
+sample_data <- data.frame(condition = c("good", "average", "average", "new"),
+price_USD = c(50000, 20000, 80000, 90000),
+model = c("s-class", "glk", "gls", "gls"),
+odometer_mi = c(12000, 30000, 35000, 150000),
+year = c(2016, 2015, 2020, 2010))
+listing_search(sample_data, budget=c(0, 30000), model = "any",
+sort_feature = "odometer_mi", ascending = TRUE)
+listing_search(sample_data, budget=50000, model = "gls",
+sort_feature = "year", ascending = FALSE)
 }
