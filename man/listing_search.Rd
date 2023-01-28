@@ -11,7 +11,8 @@ listing_search(
   model = "any",
   sort_feature = "odometer_mi",
   ascending = TRUE,
-  price_col = "price_USD"
+  price_col = "price_USD",
+  model_col = "model"
 )
 }
 \arguments{
@@ -26,6 +27,8 @@ listing_search(
 \item{ascending}{bool Boolean value that indicate whether the sort is ascending. The default value is True.}
 
 \item{price_col}{character Character value that indicate the column name of price column.}
+
+\item{model_col}{character Character value that indicate the column name of model column.}
 }
 \value{
 data.frame A data frame of the sorted listings that matches user's expected budget range.

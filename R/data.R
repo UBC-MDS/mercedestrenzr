@@ -10,9 +10,11 @@
 #' @param sort_feature character The numeric variable that the user is interested in using to sort the result. The default value is to sort by odometer value.
 #' @param ascending bool Boolean value that indicate whether the sort is ascending. The default value is True.
 #' @param price_col character Character value that indicate the column name of price column.
-#'
+#' @param model_col character Character value that indicate the column name of model column.
+
 #' @return data.frame A data frame of the sorted listings that matches user's expected budget range.
 #' @import dplyr
+#' @import rlang
 #' @export
 #' @examples
 #' sample_data <- data.frame(condition = c("good", "average", "average", "new"),
@@ -25,7 +27,7 @@
 
 listing_search <- function(data, budget=c(0, Inf), model = "any",
                            sort_feature = "odometer_mi", ascending = TRUE,
-                           price_col = "price_USD") {
+                           price_col = "price_USD", model_col = "model") {
 
   # ===== Input checks =====
   # check input data is a dataframe
@@ -49,8 +51,8 @@ listing_search <- function(data, budget=c(0, Inf), model = "any",
   }
 
   # sort_feature should be a string
-  if(!is.character(sort_feature)){
-    stop("The input value for sort_feature parameter should be a string")
+  if(!is.character(sort_feature) | length(sort_feature) != 1){
+    stop("The input value for sort_feature parameter should be a character value")
   }
 
   # sort_feature should indicate a numeric column in the provided data frame
@@ -69,6 +71,12 @@ listing_search <- function(data, budget=c(0, Inf), model = "any",
     stop("Please specify the price column name using a string, or use the default value.")
   }
 
+  # model_col string
+  if(!is.character(model_col)){
+    stop("Please specify the model column name using a string, or use the default value.")
+  }
+
+
 
   # ==== FUNCTION ====
   # filter by budget
@@ -80,7 +88,7 @@ listing_search <- function(data, budget=c(0, Inf), model = "any",
 
   # filter by model
   if(model != "any"){
-    temp_df <- temp_df |> dplyr::filter(model == model)
+    temp_df <- temp_df[temp_df[,model_col] == model,]
   }
 
   # sort by sort_feature & price
@@ -92,7 +100,7 @@ listing_search <- function(data, budget=c(0, Inf), model = "any",
   }
 
   # order output
-  priority_order <- c(price_col, 'model', sort_feature)
+  priority_order <- c(price_col, model_col, sort_feature)
   remaining <- setdiff(names(data),priority_order)
   all_col <- c(priority_order,remaining)
   result <- temp_df[,all_col]
