@@ -83,11 +83,19 @@ This is a basic example which shows you how to solve a common problem:
 #listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer", ascending = TRUE)
 
 # visualizing the price distribution
+#plot_mercedes_price('c-class', 400000, data)
 
 # predict how much a car would be using regression model and show important features
 ```
 
-# Contributing
+## Code of Conduct
+
+Please note that the mercedestrenzr project is released with a
+[Contributor Code of
+Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
+
+## Contributing
 
 Interested in contributing? Check out the contributing guidelines.
 Please note that this project is released with a Code of Conduct. By
