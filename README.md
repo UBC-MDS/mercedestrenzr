@@ -24,6 +24,13 @@ big picture about the market. The package is rely on the real market
 data set to plot, filter and predict. It also gives advice to buyers and
 seller when they try to make a decision.
 
+Our package is the first package in cran that focus on analyzing the
+market trend of Mercedes-Benz. This is a pilot project on streamlining
+the data analysis process of used cars market. This package could serve
+as the foundation for bigger projects in the future that extend the
+scope beyond a single car brand and leverage web scrapping techniques to
+enhance the dataset.
+
 # Functions
 
 The package contains the following functions:
@@ -79,9 +86,6 @@ This is a basic example which shows you how to solve a common problem:
 
 # predict how much a car would be using regression model and show important features
 ```
-## Code of Conduct
-
-Please note that the mercedestrenzr project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/1/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
 
 # Contributing
 
