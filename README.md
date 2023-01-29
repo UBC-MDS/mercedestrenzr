@@ -69,7 +69,7 @@ You can install the development version of mercedestrenzr from
 devtools::install_github("UBC-MDS/mercedestrenzr")
 ```
 
-# Usage (TO BE COMPLETED once the function codes are added)
+# Usage
 
 This is a basic example which shows you how to solve a common problem:
 
@@ -126,7 +126,9 @@ summary(mercedes_data)
 #> 
 
 # filter listings based on budget range of characteristics of interest
-result <- listing_search(mercedes_data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
+result <- listing_search(mercedes_data, budget=c(0, 30000), 
+                         model = "any", sort_feature = "odometer_mi",
+                         ascending = TRUE)
 head(result[, 1:5], 5)
 #> # A tibble: 5 × 5
 #>   price_USD model    odometer_mi  ...1 condition
@@ -145,7 +147,8 @@ plot_mercedes_price('c-class', 30000, mercedes_data)
 
 ``` r
 
-# predict how much a car would be using regression model and show important features
+# predict how much a car would be using regression model 
+# and show important features
 price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
 price
 #> # A tibble: 1 × 1
