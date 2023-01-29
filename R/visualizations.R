@@ -53,8 +53,8 @@ plot_mercedes_price <- function(model, price, market_df, model_col = 'model', pr
   # filter the data set for the specific model
   market_df <- market_df[market_df[,model_col] == model,]
 
-  # Calculating the median of the market
-  mean <- mean(market_df[,price_col])
+  # Calculating the mean of the market
+  mean <- mean(market_df[,price_col][[1]])
 
   # different message will be send base on price
   if (price > mean) {
