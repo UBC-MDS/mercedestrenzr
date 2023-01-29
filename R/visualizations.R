@@ -54,14 +54,15 @@ plot_mercedes_price <- function(model, price, market_df, model_col = 'model', pr
   market_df <- market_df[market_df[,model_col] == model,]
 
   # Calculating the median of the market
-  mean <- mean(market_df[,price_col])
+  #mean <- mean(market_df[,price_col])
 
   # different message will be send base on price
-  if (price > mean) {
-    message <- paste0("The input price", " = ", price, " is larger than the average of the market")
-  } else {
-    message <- paste0("The input price", " = ", price, " is smaller than the average of the market")
-  }
+  #if (price > mean) {
+  #  message <- paste0("The input price", " = ", price, " is larger than the average of the market")
+  #} else {
+  #  message <- paste0("The input price", " = ", price, " is smaller than the average of the market")
+  #}
+  message <- "The Density Plot of Current Price"
 
   final_plot <- ggplot(market_df) +
     # aes(x = price_USD) +
@@ -69,6 +70,7 @@ plot_mercedes_price <- function(model, price, market_df, model_col = 'model', pr
     # aes_string(x = price_col) +
     geom_density(fill = 'blue', alpha=0.5) +
     geom_vline(xintercept = price, color = 'red') +
+    #ggtitle(message) +
     ggtitle(message) +
     xlab("Price") +
     ylab("Density") +
