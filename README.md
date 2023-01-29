@@ -74,18 +74,84 @@ devtools::install_github("UBC-MDS/mercedestrenzr")
 This is a basic example which shows you how to solve a common problem:
 
 ``` r
-#library(mercedestrenzr)
-## basic example code
+library(mercedestrenzr)
+#> Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when
+#> loading 'mercedestrenzr'
+#> Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading
+#> 'mercedestrenzr'
+#> Warning: replacing previous import 'dplyr::slice' by 'xgboost::slice' when
+#> loading 'mercedestrenzr'
 
 # load sample data from package
+summary(mercedes_data)
+#>       ...1        price_USD          condition         paint_color       
+#>  Min.   :   0   Min.   :0.000e+00   Length:8553        Length:8553       
+#>  1st Qu.:2138   1st Qu.:6.500e+03   Class :character   Class :character  
+#>  Median :4276   Median :1.790e+04   Mode  :character   Mode  :character  
+#>  Mean   :4276   Mean   :7.273e+05                                        
+#>  3rd Qu.:6414   3rd Qu.:3.000e+04                                        
+#>  Max.   :8552   Max.   :3.025e+09                                        
+#>                                                                          
+#>     model            odometer_mi           year      num_cylinders     
+#>  Length:8553        Min.   :      0   Min.   :1929   Length:8553       
+#>  Class :character   1st Qu.:  36525   1st Qu.:2011   Class :character  
+#>  Mode  :character   Median :  68376   Median :2014   Mode  :character  
+#>                     Mean   :  75356   Mean   :2013                     
+#>                     3rd Qu.:  99838   3rd Qu.:2017                     
+#>                     Max.   :9999999   Max.   :2021                     
+#>                     NA's   :150                                        
+#>      fuel           transmission          drive               size          
+#>  Length:8553        Length:8553        Length:8553        Length:8553       
+#>  Class :character   Class :character   Class :character   Class :character  
+#>  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+#>                                                                             
+#>                                                                             
+#>                                                                             
+#>                                                                             
+#>      type              state               VIN            title_status      
+#>  Length:8553        Length:8553        Length:8553        Length:8553       
+#>  Class :character   Class :character   Class :character   Class :character  
+#>  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+#>                                                                             
+#>                                                                             
+#>                                                                             
+#>                                                                             
+#>  description       
+#>  Length:8553       
+#>  Class :character  
+#>  Mode  :character  
+#>                    
+#>                    
+#>                    
+#> 
 
 # filter listings based on budget range of characteristics of interest
-#listing_search(data, budget=c(0, 30000), model = "any", sort_feature = "odometer", ascending = TRUE)
+result <- listing_search(mercedes_data, budget=c(0, 30000), model = "any", sort_feature = "odometer_mi", ascending = TRUE)
+head(result[, 1:5], 5)
+#> # A tibble: 5 × 5
+#>   price_USD model    odometer_mi  ...1 condition
+#>       <dbl> <chr>          <dbl> <dbl> <chr>    
+#> 1         0 e-class            0  1599 excellent
+#> 2         0 sl-class           0  3528 used     
+#> 3      4999 c-class            0  2493 excellent
+#> 4      4999 c-class            0  2494 excellent
+#> 5     11900 m-class            0   686 excellent
 
 # visualizing the price distribution
-#plot_mercedes_price('c-class', 400000, data)
+plot_mercedes_price('c-class', 30000, mercedes_data)
+```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
+``` r
 
 # predict how much a car would be using regression model and show important features
+price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
+price
+#> # A tibble: 1 × 1
+#>   predicted_price_USD
+#>                 <dbl>
+#> 1              11069.
 ```
 
 ## Code of Conduct
