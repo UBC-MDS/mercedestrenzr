@@ -14,6 +14,6 @@ A model object.
 mercedes_price_model
 }
 \description{
-A pre-trained model for price prediction
+A script for loading the pre-trained model for price prediction
 }
 \keyword{datasets}
