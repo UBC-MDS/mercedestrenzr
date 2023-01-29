@@ -25,4 +25,8 @@ Imports:
     ggplot2,
     rlang,
     tidyverse,
-    dplyr
+    dplyr,
+    bundle,
+    here,
+    tidymodels,
+    xgboost
