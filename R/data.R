@@ -13,7 +13,7 @@
 #' @param model_col character Character value that indicate the column name of model column.
 
 #' @return data.frame A data frame of the sorted listings that matches user's expected budget range.
-#' @import dplyr
+#' @importFrom  dplyr filter arrange mutate rename
 #' @import rlang
 #' @export
 #' @examples
