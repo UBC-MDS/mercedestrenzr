@@ -29,5 +29,4 @@ Imports:
     dplyr,
     bundle,
     here,
-    tidymodels,
-    xgboost
+    tidymodels
