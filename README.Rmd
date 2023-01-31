@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/UBC-MDS/mercedestrenzr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UBC-MDS/mercedestrenzr/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/UBC-MDS/mercedestrenzr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UBC-MDS/mercedestrenzr?branch=main)
 <!-- badges: end -->
 
 The goal of mercedestrenzr is to inspect and analyze used Mercedes Benz car prices. The package helps users to get simple answers on how to choose the used Mercedes Benz car in the market. The package also includes useful visualization tool and trained model to serve buyers and sellers.

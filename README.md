@@ -4,6 +4,10 @@
 # mercedestrenzr
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/UBC-MDS/mercedestrenzr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UBC-MDS/mercedestrenzr/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/UBC-MDS/mercedestrenzr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/UBC-MDS/mercedestrenzr?branch=main)
 <!-- badges: end -->
 
 The goal of mercedestrenzr is to inspect and analyze used Mercedes Benz
@@ -75,12 +79,6 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(mercedestrenzr)
-#> Warning: replacing previous import 'dplyr::filter' by 'stats::filter' when
-#> loading 'mercedestrenzr'
-#> Warning: replacing previous import 'dplyr::lag' by 'stats::lag' when loading
-#> 'mercedestrenzr'
-#> Warning: replacing previous import 'dplyr::slice' by 'xgboost::slice' when
-#> loading 'mercedestrenzr'
 
 # load sample data from package
 summary(mercedes_data)
