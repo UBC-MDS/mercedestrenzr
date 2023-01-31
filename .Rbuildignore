@@ -6,3 +6,4 @@
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTORS\.md$
 
+^codecov\.yml$

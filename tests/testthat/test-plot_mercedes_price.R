@@ -8,6 +8,7 @@ market_df <- data.frame(price_USD = data, model = "glb 35")
 
 # Test when input model is an integer, the function will throw an error
 test_that("Expected exception was not raised", {
+  expect_error(plot_mercedes_price('notexisting', '400000', market_df))
   expect_error(plot_mercedes_price(10, 450000, market_df), "The first input should be a character contain the specific model")
   expect_error(plot_mercedes_price(100, 450000, market_df), "The first input should be a character contain the specific model")
   expect_error(plot_mercedes_price(list('glb'), 450000, market_df), "The first input should be a character contain the specific model")
@@ -25,6 +26,7 @@ test_that("Expected exception was not raised", {
 # Test if price column not in the data set, the function will throw an error
 test_that("Expected exception was not raised", {
   expect_error(plot_mercedes_price('glb', 400000, market_df, price_col = 'not_in'), "Please insert the name of the price column")
+  expect_error(plot_mercedes_price('glb 35', '400000', market_df))
   expect_error(plot_mercedes_price('glb', 400000, market_df, price_col = 'price_CAD'), "Please insert the name of the price column")
 })
 
@@ -32,4 +34,5 @@ test_that("Expected exception was not raised", {
 test_that("Function did not return a ggplot", {
   expect_type(plot_mercedes_price('glb 35', 400000, market_df), "list")
   expect_type(plot_mercedes_price('glb 35', 300000, market_df), "list")
+  expect_type(plot_mercedes_price('glb 35', 0, market_df), "list")
 })

@@ -1,10 +1,6 @@
 # Author: Spencer Gerlach
 # Date: 2023-01-28
 
-library(tidyverse)
-library(stats)
-library(rlang)
-
 #' Returns a dataframe summary of all existing Mercedes-Benz car listings
 #' Summary mileage, price, and rarity information is shown.
 #'
@@ -17,7 +13,7 @@ library(rlang)
 #'
 #' @return data.frame Summary dataframe of Mercedes-Benz models, including average and median mileage (mi) and price (USD), and information about rarity. A model will be considered common, uncommon, or rare based on the percentage of market listings.
 #' @import tidyverse
-#' @import stats
+#' @importFrom stats median predict
 #' @import rlang
 #' @export
 #'
@@ -79,9 +75,9 @@ listing_summary <- function(data, model="all", model_col="model", odometer_col="
   summary_table <- filtered_mercedes |>
     dplyr::group_by({{model_col}}) |>
     dplyr::summarize(avg_mileage_mi = round(mean({{odometer_col}}, na.rm = TRUE), 0),
-                     median_mileage_mi = round(stats::median({{odometer_col}}),0),
+                     median_mileage_mi = round(median({{odometer_col}}),0),
                      avg_price_USD = round(mean({{price_col}}, na.rm=TRUE), 0),
-                     median_price_USD = stats::median({{price_col}}, na.rm = TRUE),
+                     median_price_USD = median({{price_col}}, na.rm = TRUE),
                      percent_of_market = round(100*(dplyr::n() / num_filtered), 1),
                      rarity = dplyr::case_when(percent_of_market <= 5 ~ "Rare",
                                                percent_of_market < 15 & percent_of_market > 5 ~ "Uncommon",
