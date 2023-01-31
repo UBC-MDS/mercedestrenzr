@@ -13,6 +13,7 @@
 #'
 #' @return data.frame Summary dataframe of Mercedes-Benz models, including average and median mileage (mi) and price (USD), and information about rarity. A model will be considered common, uncommon, or rare based on the percentage of market listings.
 #' @import tidyverse
+#' @importFrom stats median predict
 #' @import rlang
 #' @export
 #'
