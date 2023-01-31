@@ -17,7 +17,6 @@
 #' @import tidymodels
 #' @import here
 #' @import bundle
-#' @import xgboost
 #' @import rlang
 #' @export
 #'
