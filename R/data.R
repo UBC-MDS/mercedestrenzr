@@ -1,6 +1,8 @@
 # Author: Kelly Wu
 # Date: 2023-01-28
 
+#' Listing Search
+#'
 #' Return the top listings that are within the budget specified by the user.
 #' The results are filtered by an optional input, model, and sorted by ascending price and another the specified feature in the sort_feature parameter.
 #'

@@ -2,8 +2,7 @@
 % Please edit documentation in R/data.R
 \name{listing_search}
 \alias{listing_search}
-\title{Return the top listings that are within the budget specified by the user.
-The results are filtered by an optional input, model, and sorted by ascending price and another the specified feature in the sort_feature parameter.}
+\title{Listing Search}
 \usage{
 listing_search(
   data,

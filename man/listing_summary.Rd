@@ -2,8 +2,7 @@
 % Please edit documentation in R/datasummary.R
 \name{listing_summary}
 \alias{listing_summary}
-\title{Returns a dataframe summary of all existing Mercedes-Benz car listings
-Summary mileage, price, and rarity information is shown.}
+\title{Summarize mileage, price, and rarity information}
 \usage{
 listing_summary(
   data,

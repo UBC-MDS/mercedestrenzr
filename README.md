@@ -46,13 +46,12 @@ The package contains the following functions:
 2.  `listing_search`: Retrieves the top listings that are within the
     budget range specified by the user.
 
-3.  `predict_mercedes_price`: Predicts the price in USD of a
+3.  `listing_summary`: Summarize mileage, price, and rarity information
+    in the dataset.
+
+4.  `predict_mercedes_price`: Predicts the price in USD of a
     Mercedes-Benz given the year, model, condition, and number of
     cylinders.
-
-4.  `important_mercedes_features`: Returns the features (i.e. data
-    columns) that are important to determining predicted mercedes
-    pricing.
 
 # Package dataset
 
@@ -71,6 +70,7 @@ You can install the development version of mercedestrenzr from
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/mercedestrenzr")
+devtools::install_github(dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 # Usage
@@ -122,8 +122,28 @@ summary(mercedes_data)
 #>                    
 #>                    
 #> 
+```
 
-# filter listings based on budget range of characteristics of interest
+#### Overview of listings
+
+``` r
+summary_result<- listing_summary(data = mercedes_data, model="all")
+head(summary_result)
+#> # A tibble: 6 × 7
+#>   model    avg_mileage_mi median_mileage_mi avg_price_USD media…¹ perce…² rarity
+#>   <chr>             <dbl>             <dbl>         <dbl>   <dbl>   <dbl> <chr> 
+#> 1 a-class           14456             10512         32094   31590     0.3 Rare  
+#> 2 amg               21997             26191         50325   44990     1.8 Rare  
+#> 3 b-class           25819             26803         16797   15590     0.7 Rare  
+#> 4 c-class           75869             74235         14783   12950    20.1 Common
+#> 5 cl-class          65209             61445         19324   20888     9   Uncom…
+#> 6 d-class          163542            150000          8994    7100     0.2 Rare  
+#> # … with abbreviated variable names ¹​median_price_USD, ²​percent_of_market
+```
+
+#### filter listings based on budget range of characteristics of interest
+
+``` r
 result <- listing_search(mercedes_data, budget=c(0, 30000), 
                          model = "any", sort_feature = "odometer_mi",
                          ascending = TRUE)
@@ -136,17 +156,19 @@ head(result[, 1:5], 5)
 #> 3      4999 c-class            0  2493 excellent
 #> 4      4999 c-class            0  2494 excellent
 #> 5     11900 m-class            0   686 excellent
+```
 
-# visualizing the price distribution
+#### visualizing the price distribution
+
+``` r
 plot_mercedes_price('c-class', 30000, mercedes_data)
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-plot_readme-1.png" width="100%" />
+
+#### Prediction: how much a car would be using regression model
 
 ``` r
-
-# predict how much a car would be using regression model 
-# and show important features
 price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
 price
 #> # A tibble: 1 × 1
