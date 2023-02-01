@@ -38,9 +38,10 @@ The package contains the following functions:
 
 2. `listing_search`: Retrieves the top listings that are within the budget range specified by the user.
 
-3. `predict_mercedes_price`: Predicts the price in USD of a Mercedes-Benz given the year, model, condition, and number of cylinders.
+3. `listing_summary`: Summarize mileage, price, and rarity information in the dataset.
 
-4. `important_mercedes_features`: Returns the features (i.e. data columns) that are important to determining predicted mercedes pricing.
+4. `predict_mercedes_price`: Predicts the price in USD of a Mercedes-Benz given the year, model, condition, and number of cylinders.
+
 
 # Package dataset
 The package contains a static dataset for Craiglist used-car listings that were previously web scraped. Several key attributes about the used-car are available in the dataset, such as vehicle prices, models, car conditions, odometer readings, VINs, regions and transmission. The package's dataset was adapted from verison 10 of the raw dataset created by [AustinReese](https://github.com/AustinReese/UsedVehicleSearch).
@@ -53,6 +54,7 @@ You can install the development version of mercedestrenzr from [GitHub](https://
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/mercedestrenzr")
+devtools::install_github(dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 # Usage
@@ -64,21 +66,33 @@ library(mercedestrenzr)
 
 # load sample data from package
 summary(mercedes_data)
+```
 
-# filter listings based on budget range of characteristics of interest
+#### Overview of listings
+```{r }
+summary_result<- listing_summary(data = mercedes_data, model="all")
+head(summary_result)
+```
+
+#### filter listings based on budget range of characteristics of interest
+```{r }
 result <- listing_search(mercedes_data, budget=c(0, 30000), 
                          model = "any", sort_feature = "odometer_mi",
                          ascending = TRUE)
 head(result[, 1:5], 5)
+```
 
-# visualizing the price distribution
+#### visualizing the price distribution
+```{r }
 plot_mercedes_price('c-class', 30000, mercedes_data)
 
-# predict how much a car would be using regression model 
-# and show important features
+```
+
+
+# Prediction: how much a car would be using regression model 
+```{r }
 price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
 price
-
 ```
 
 ## Code of Conduct
