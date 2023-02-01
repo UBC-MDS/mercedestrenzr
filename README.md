@@ -166,7 +166,7 @@ plot_mercedes_price('c-class', 30000, mercedes_data)
 
 <img src="man/figures/README-plot_readme-1.png" width="100%" />
 
-# Prediction: how much a car would be using regression model
+#### Prediction: how much a car would be using regression model
 
 ``` r
 price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
