@@ -83,7 +83,7 @@ head(result[, 1:5], 5)
 ```
 
 #### visualizing the price distribution
-```{r }
+```{r plot_readme}
 plot_mercedes_price('c-class', 30000, mercedes_data)
 
 ```

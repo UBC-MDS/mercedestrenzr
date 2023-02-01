@@ -164,7 +164,7 @@ head(result[, 1:5], 5)
 plot_mercedes_price('c-class', 30000, mercedes_data)
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+<img src="man/figures/README-plot_readme-1.png" width="100%" />
 
 # Prediction: how much a car would be using regression model
 
