@@ -1,0 +1,94 @@
+---
+title: "mercedestrenzr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{mercedestrenzr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Introduction
+
+When searching for used-car listings, the user often needs to:
+
+- Get an overview of the used-car market
+
+- Search for listings that match user's needs and criteria
+
+- Explore the price range to predict and decide buying/selling price
+
+The goal of mercedestrenzr is to inspect and analyze used Mercedes Benz car prices. The package helps users to get simple answers on how to choose the used Mercedes Benz car in the market. The package also includes useful visualization tool and trained model to serve buyers and sellers.
+
+This document introduces you to the set of tools provided in mercedestrenzr package, and shows you how to apply them to data frames of car listings.
+
+## Data
+
+To explore the functions provided in mercedestrenzr, we will use the dataset mercedes_data. Several key attributes about the used-car are available in the dataset, such as vehicle prices, models, car conditions, odometer readings, VINs, regions and transmission.It is documented in ?mercedes_data.
+
+```{r, warning=FALSE}
+library(mercedestrenzr)
+summary(mercedes_data)
+```
+ 
+## An overview of listings with listing_summary() function
+
+listing_summary() function summarize Summarize mileage, price, and rarity information in the dataset. of all existing Mercedes-Benz car listings, or specified model of interest.
+
+For example, here we want to generate a summary for mercedes_data dataset to get the summary statistics of all models. One could change `model = "all"` to `model = "s-class"` to focus on a specific model of interest.
+
+```{r}
+# Overview of all listings
+summary_result<- listing_summary(data = mercedes_data, model="all")
+head(summary_result)
+```
+
+## Customizable listing search with listing_search() function
+
+Use this function to search for the listings that match the user’s expected price range.
+
+The results are filtered by an optional input, model. By default, all models will be shown, but the user can change it to narrow down the searching range to only the models of interest.
+
+The results are also sorted by ascending price, and another the specified feature in the sort_feature parameter. By default the sort_feature is lower mileage value, but user has the flexibility to choose another numeric attribute.
+
+For example, here we want to search all listings that are within the price range of 0 to 30K dollars, any model, and we want the cars of lower odometer reading to be ranked higher in the search results. The price is used as a second sorting feature so that relatively cheaper listings are returned.
+
+```{r}
+result <- listing_search(mercedes_data, budget=30000, 
+                         model = "any", sort_feature = "odometer_mi",
+                         ascending = TRUE)
+head(result[, 1:10], 5)
+```
+
+For another example, the following code search for listings within a narrower range, for a specific model, and sorted by year
+
+```{r}
+result <- listing_search(mercedes_data, budget=c(20000, 30000), 
+                         model = "s-class", sort_feature = "year",
+                         ascending = FALSE)
+head(result[, 1:10], 5)
+```
+
+## Visualize price distribution with plot_mercedes_price() function
+ 
+Suppose that the user has a buying/selling price in mind, but he/she doesn't know if this price is reasonable. `plot_mercedes_price()` function could visualize the price distribution. A density plot of a specific Mercedes-Benz model is generated to see where the current vehicle’s price falls within the distribution of prices for that model in the market.
+
+```{r fig.width=7, fig.height=4}
+plot_mercedes_price('c-class', 30000, mercedes_data)
+```
+
+From the plot above, we can clearly see the price distribution of c-class car-listings, and know that 30000 is on the relatively higher end of the price range.
+
+## Price prediction based on key attributes with predict_mercedes_price function
+
+Using a carefully built pre-trained model, this function will predicts the price in USD of a Mercedes-Benz given the year, model, condition, paint color and odometer reading. Note that the model was trained on data from 1990 to 2022.
+
+The key features that require user input are (in order): the model, the year that car was made, the odomoteter reading of the vehicle, the color the car is painted and the physical condition of the car.
+
+In the example below, the function predict the price of an E-class silver car made in 2015 with 55000 mileage and fair condition to be 11068.81 USD.
+
+```{r}
+price <- predict_mercedes_price("e-class", 2015, 55000, "fair", "silver")
+price
+```
+
+

@@ -1,6 +1,8 @@
 # Author: Spencer Gerlach
 # Date: 2023-01-28
 
+#' Summarize mileage, price, and rarity information
+#'
 #' Returns a dataframe summary of all existing Mercedes-Benz car listings
 #' Summary mileage, price, and rarity information is shown.
 #'
