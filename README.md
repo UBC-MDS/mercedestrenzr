@@ -70,7 +70,6 @@ You can install the development version of mercedestrenzr from
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/mercedestrenzr")
-devtools::install_github(dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 # Usage
