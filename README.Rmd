@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
 
 The goal of mercedestrenzr is to inspect and analyze used Mercedes Benz car prices. The package helps users to get simple answers on how to choose the used Mercedes Benz car in the market. The package also includes useful visualization tool and trained model to serve buyers and sellers.
 
+
 # Collaborators
 Kelly Wu, Morris Zhao, Spencer Gerlach, Ty Andrews
 
@@ -42,6 +43,7 @@ The package contains the following functions:
 
 4. `predict_mercedes_price`: Predicts the price in USD of a Mercedes-Benz given the year, model, condition, and number of cylinders.
 
+For a more detailed walkthrough of function usage, the package vignette is available  [here](https://ubc-mds.github.io/mercedestrenzr/articles/mercedestrenzr-vignette.html)
 
 # Package dataset
 The package contains a static dataset for Craiglist used-car listings that were previously web scraped. Several key attributes about the used-car are available in the dataset, such as vehicle prices, models, car conditions, odometer readings, VINs, regions and transmission. The package's dataset was adapted from verison 10 of the raw dataset created by [AustinReese](https://github.com/AustinReese/UsedVehicleSearch).
@@ -54,7 +56,6 @@ You can install the development version of mercedestrenzr from [GitHub](https://
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/mercedestrenzr")
-devtools::install_github(dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 # Usage

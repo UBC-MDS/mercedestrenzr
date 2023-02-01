@@ -53,6 +53,10 @@ The package contains the following functions:
     Mercedes-Benz given the year, model, condition, and number of
     cylinders.
 
+For a more detailed walkthrough of function usage, the package vignette
+is available
+[here](https://ubc-mds.github.io/mercedestrenzr/articles/mercedestrenzr-vignette.html)
+
 # Package dataset
 
 The package contains a static dataset for Craiglist used-car listings
@@ -70,7 +74,6 @@ You can install the development version of mercedestrenzr from
 ``` r
 # install.packages("devtools")
 devtools::install_github("UBC-MDS/mercedestrenzr")
-devtools::install_github(dependencies = TRUE, build_vignettes = TRUE)
 ```
 
 # Usage
